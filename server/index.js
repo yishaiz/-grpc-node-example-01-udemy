@@ -21,6 +21,29 @@ const greet = (call, callback) => {
     callback(null, greeting)
 }
 
+const greetManyTimes = (call, callback) => {
+    const firstName = call.request.getGreeting().getFirstName
+    const firstName2 = call.request.greeting.first_name
+
+    console.log({ firstName, firstName2 })
+
+    // const lastName = call.request.greeting.last_name
+
+    let count = 0, intervalID = setInterval(() => {
+        const greetManyTimesResponse = new greets.GreetManyTimesResponse()
+        greetManyTimesResponse.setResult(firstName)
+
+        // setup streaming
+        call.write(greetManyTimesResponse)
+
+        if (++count > 9) {
+            clearInterval(intervalID)
+
+            call.end() // we have sent all messages
+        }
+    }, 1000)
+}
+
 const sum = (call, callback) => {
     const sumResponse = new calc.SumResponse()
     const firstNumber = call.request.getFirstNumber()
