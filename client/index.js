@@ -1,18 +1,36 @@
-const grpc = require('grpc')
+const grpc = require('grpc');
 
-const services = require('../server/protos/dummy_grpc_pb')
+const service = require('../server/protos/dummy_grpc_pb');
 
 const main = () => {
-    const hostAndPort = "localhost:50051"
-    const client = new services.DummyServiceClient(
-        hostAndPort,
-        grpc.credentials.createInsecure()
-    )
+  const hostAndPort = 'localhost:50051';
+  const client = new service.GreetServiceClient(
+    hostAndPort,
+    grpc.credentials.createInsecure()
+  );
 
-    // here we will do stuff later
+  // create our request
+  const request = new greets.GreetRequest();
 
-    console.log(`hello from client`)
+  // created a protocol buffer greeting message
+  const greeting = new greets.Greeting();
+  greeting.setFirstname('Yishai');
+  greeting.setLastname('z');
 
-    console.log({ client })
-}
+  // set the greeting
+  request.setGreeting(greeting);
+
+  client.greet(request, (error, response) => {
+    console.log({ error, response });
+
+    if (!error) {
+      console.log('Greeting response', response.getResult());
+    } else {
+      console.error(error);
+    }
+  });
+
+  // console.log(`hello from client`)
+  // console.log({ client })
+};
 main();
