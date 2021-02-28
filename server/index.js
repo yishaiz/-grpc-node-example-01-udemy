@@ -20,7 +20,8 @@ const greet = (call, callback) => {
 const main = () => {
     const server = new grpc.Server()
 
-    server.addService(service.GreetServiceClient, {greet: greet})
+    // server.addService(service.GreetServiceClient, {greet: greet})
+    server.addService(service.GreetServiceService, {greet: greet})
 
     // console.log({grpc, server})
     const hostAndPort = "127.0.0.1:50051"
