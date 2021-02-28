@@ -15,12 +15,13 @@ const main = () => {
 
   // created a protocol buffer greeting message
   const greeting = new greets.Greeting();
-  greeting.setFirstname('Yishai');
-  greeting.setLastname('z');
+  greeting.setFirstName('Yishai');
+  greeting.setLastName('z');
 
   // set the greeting
   request.setGreeting(greeting);
 
+  console.log('before greet')
   client.greet(request, (error, response) => {
     console.log({ error, response });
 
@@ -31,7 +32,9 @@ const main = () => {
     }
   });
 
-  // console.log(`hello from client`)
+
+  console.log(`hello from client`)
+  // setTimeout(()=>console.log('after'), 2000)
   // console.log({ client })
 };
 main();

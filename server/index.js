@@ -11,7 +11,7 @@ const greet = (call, callback) => {
     const greeting = new greets.GreetResponse()
 
     greeting.setResult(
-        "Hello " + call.requets.getGreeting().getFirstname()
+        "Hello " + call.request.getGreeting().getFirstName()
     )
 
     callback(null, greeting)
