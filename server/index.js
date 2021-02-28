@@ -23,11 +23,6 @@ const greet = (call, callback) => {
 
 const greetManyTimes = (call, callback) => {
     const firstName = call.request.getGreeting().getFirstName
-    const firstName2 = call.request.greeting.first_name
-
-    console.log({ firstName, firstName2 })
-
-    // const lastName = call.request.greeting.last_name
 
     let count = 0, intervalID = setInterval(() => {
         const greetManyTimesResponse = new greets.GreetManyTimesResponse()

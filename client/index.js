@@ -55,6 +55,7 @@ const callGreetManyTimes = () => {
 
   const greeting = new greets.Greeting();
   greeting.setFirstName('Yishai');
+  request.setGreeting(greeting)
 
   const call = client.greetManyTimes(request, () => { })
 
