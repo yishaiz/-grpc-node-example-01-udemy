@@ -2,13 +2,11 @@ syntax = "proto3";
 
 package greet;
 
-
 service GreetService {
   // unary API
   // rpc MethodName (Request) returns (Response);
   rpc Greet (GreetRequest) returns (GreetResponse) {};
 }
-
 
 message Greeting { 
   string first_name = 1;

@@ -22,6 +22,7 @@ const main = () => {
   request.setGreeting(greeting);
 
   console.log('before greet')
+
   client.greet(request, (error, response) => {
     console.log({ error, response });
 
@@ -31,7 +32,6 @@ const main = () => {
       console.error(error);
     }
   });
-
 
   console.log(`hello from client`)
   // setTimeout(()=>console.log('after'), 2000)
