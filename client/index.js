@@ -68,7 +68,7 @@ const callSum = () => {
 console.log(`hello from client`)
 
 const main = () => {
-  // callGreeting()
+  callGreeting()
   callSum()
 }
 main();

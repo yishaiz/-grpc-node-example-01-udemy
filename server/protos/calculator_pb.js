@@ -251,7 +251,7 @@ proto.calculator.SumResponse.prototype.toObject = function(opt_includeInstance) 
  */
 proto.calculator.SumResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    result: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    sumResult: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -290,7 +290,7 @@ proto.calculator.SumResponse.deserializeBinaryFromReader = function(msg, reader)
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setResult(value);
+      msg.setSumResult(value);
       break;
     default:
       reader.skipField();
@@ -321,7 +321,7 @@ proto.calculator.SumResponse.prototype.serializeBinary = function() {
  */
 proto.calculator.SumResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getResult();
+  f = message.getSumResult();
   if (f !== 0) {
     writer.writeInt32(
       1,
@@ -332,10 +332,10 @@ proto.calculator.SumResponse.serializeBinaryToWriter = function(message, writer)
 
 
 /**
- * optional int32 result = 1;
+ * optional int32 sum_result = 1;
  * @return {number}
  */
-proto.calculator.SumResponse.prototype.getResult = function() {
+proto.calculator.SumResponse.prototype.getSumResult = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
@@ -344,7 +344,7 @@ proto.calculator.SumResponse.prototype.getResult = function() {
  * @param {number} value
  * @return {!proto.calculator.SumResponse} returns this
  */
-proto.calculator.SumResponse.prototype.setResult = function(value) {
+proto.calculator.SumResponse.prototype.setSumResult = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 
