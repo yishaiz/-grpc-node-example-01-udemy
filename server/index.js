@@ -58,7 +58,10 @@ const main = () => {
     const server = new grpc.Server()
 
     // server.addService(service.GreetServiceClient, {greet: greet})
-    server.addService(greetService.GreetServiceService, { greet: greet })
+    server.addService(greetService.GreetServiceService, {
+        greet,
+        greetManyTimes
+    })
     server.addService(calcService.CalculatorServiceService, { sum })
 
     // console.log({grpc, server})

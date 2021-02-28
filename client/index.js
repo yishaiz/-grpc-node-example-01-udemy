@@ -42,6 +42,40 @@ const callGreeting = () => {
   // console.log({ client })
 };
 
+
+
+const callGreetManyTimes = () => {
+  const hostAndPort = 'localhost:50051';
+  const client = new greetService.GreetServiceClient(
+    hostAndPort,
+    grpc.credentials.createInsecure()
+  );
+
+  const request = new greets.GreetManyTimesRequest();
+
+  const greeting = new greets.Greeting();
+  greeting.setFirstName('Yishai');
+
+  const call = client.greetManyTimes(request, () => { })
+
+  call.on('data', (response) => {
+    console.log('Client Streaming Response : ', response.getResult());
+  })
+
+  call.on('status', (status) => {
+    console.log({ status });
+  })
+
+  call.on('error', (error) => {
+    console.error(error);
+  })
+
+  call.on('end', () => {
+    console.log('Streaming Ended !');
+  })
+};
+
+
 const callSum = () => {
   const hostAndPort = 'localhost:50051';
   const client = new calcService.CalculatorServiceClient(
@@ -69,6 +103,7 @@ console.log(`hello from client`)
 
 const main = () => {
   callGreeting()
+  callGreetManyTimes()
   callSum()
 }
 main();
