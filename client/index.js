@@ -1,11 +1,15 @@
 const grpc = require('grpc');
 const greets = require('../server/protos/greet_pb')
-const service = require('../server/protos/greet_grpc_pb')
+const greetService = require('../server/protos/greet_grpc_pb')
+
+const calc = require('../server/protos/calculator_pb')
+const calcService = require('../server/protos/calculator_grpc_pb')
 
 
-const main = () => {
+
+const callGreeting = () => {
   const hostAndPort = 'localhost:50051';
-  const client = new service.GreetServiceClient(
+  const client = new greetService.GreetServiceClient(
     hostAndPort,
     grpc.credentials.createInsecure()
   );
@@ -37,4 +41,34 @@ const main = () => {
   // setTimeout(()=>console.log('after'), 2000)
   // console.log({ client })
 };
+
+const callSum = () => {
+  const hostAndPort = 'localhost:50051';
+  const client = new calcService.CalculatorServiceClient(
+    hostAndPort,
+    grpc.credentials.createInsecure()
+  );
+
+  // create our request
+  const sumRequest = new calc.SumRequest();
+
+  sumRequest.setFirstNumber(10);
+  sumRequest.setSecondNumber(15);
+
+  client.sum(sumRequest, (error, response) => {
+    if (!error) {
+      console.log(sumRequest.getFirstNumber() + " + " + sumRequest.getSecondNumber() +
+        " = " + response.getSumResult())
+    } else {
+      console.error(error);
+    }
+  })
+};
+
+console.log(`hello from client`)
+
+const main = () => {
+  // callGreeting()
+  callSum()
+}
 main();

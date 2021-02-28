@@ -10,7 +10,7 @@ service CalculatorService {
 
 message SumRequest {
     int32 first_number = 1;
-    int32 last_number = 2;
+    int32 second_number = 2;
 }
 
 message SumResponse {

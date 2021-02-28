@@ -22,13 +22,13 @@ const greet = (call, callback) => {
 }
 
 const sum = (call, callback) => {
-    const sumResopnse = new calc.SumResponse()
+    const sumResponse = new calc.SumResponse()
     const firstNumber = call.request.getFirstNumber()
     const secondNumber = call.request.getSecondNumber()
     const result = firstNumber + secondNumber
 
-    sumResopnse.setSumResult(result)
-    callback(null, sumResopnse)
+    sumResponse.setSumResult(result)
+    callback(null, sumResponse)
 }
 
 const main = () => {

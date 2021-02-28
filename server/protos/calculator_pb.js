@@ -92,7 +92,7 @@ proto.calculator.SumRequest.prototype.toObject = function(opt_includeInstance) {
 proto.calculator.SumRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     firstNumber: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    lastNumber: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    secondNumber: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -135,7 +135,7 @@ proto.calculator.SumRequest.deserializeBinaryFromReader = function(msg, reader) 
       break;
     case 2:
       var value = /** @type {number} */ (reader.readInt32());
-      msg.setLastNumber(value);
+      msg.setSecondNumber(value);
       break;
     default:
       reader.skipField();
@@ -173,7 +173,7 @@ proto.calculator.SumRequest.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
-  f = message.getLastNumber();
+  f = message.getSecondNumber();
   if (f !== 0) {
     writer.writeInt32(
       2,
@@ -202,10 +202,10 @@ proto.calculator.SumRequest.prototype.setFirstNumber = function(value) {
 
 
 /**
- * optional int32 last_number = 2;
+ * optional int32 second_number = 2;
  * @return {number}
  */
-proto.calculator.SumRequest.prototype.getLastNumber = function() {
+proto.calculator.SumRequest.prototype.getSecondNumber = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
@@ -214,7 +214,7 @@ proto.calculator.SumRequest.prototype.getLastNumber = function() {
  * @param {number} value
  * @return {!proto.calculator.SumRequest} returns this
  */
-proto.calculator.SumRequest.prototype.setLastNumber = function(value) {
+proto.calculator.SumRequest.prototype.setSecondNumber = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
 
