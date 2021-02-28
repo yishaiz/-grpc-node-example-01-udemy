@@ -11,7 +11,7 @@ const greet = (call, callback) => {
     const greeting = new greets.GreetResponse()
 
     greeting.setResult(
-        "Hellow " + call.getGreeting().getFirstname()
+        "Hello " + call.requets.getGreeting().getFirstname()
     )
 
     callback(null, greeting)
@@ -19,6 +19,9 @@ const greet = (call, callback) => {
 
 const main = () => {
     const server = new grpc.Server()
+
+    server.addService(service.GreetServiceClient, {greet: greet)
+
     // console.log({grpc, server})
     const hostAndPort = "127.0.0.1:50051"
     server.bind(hostAndPort, grpc.ServerCredentials.createInsecure())
