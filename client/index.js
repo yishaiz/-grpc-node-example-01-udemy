@@ -9,7 +9,7 @@ const main = () => {
         grpc.credentials.createInsecure()
     )
 
-    // here we will do studd later
+    // here we will do stu later
 
     console.log(`hello from client`)
 
