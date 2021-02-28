@@ -1,6 +1,7 @@
 const grpc = require('grpc');
+const greets = require('../server/protos/greet_pb')
+const service = require('../server/protos/greet_grpc_pb')
 
-const service = require('../server/protos/dummy_grpc_pb');
 
 const main = () => {
   const hostAndPort = 'localhost:50051';
