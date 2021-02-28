@@ -6,6 +6,9 @@ service GreetService {
   // unary API
   // rpc MethodName (Request) returns (Response);
   rpc Greet (GreetRequest) returns (GreetResponse) {};
+
+    // streaming
+    rpc GreetManyTimes (GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
 }
 
 message Greeting { 
@@ -13,11 +16,21 @@ message Greeting {
   string last_name = 2;
 }
 
-message GreetRequest { 
+
+message GreetRequest {
   Greeting greeting = 1;
 }
 
-message GreetResponse { 
+message GreetManyTimesRequest {
+  Greeting greeting = 1;
+}
+
+message GreetResponse {
   string result = 1;
 }
+
+message GreetManyTimesResponse {
+  string result = 1;
+}
+
 
