@@ -8,9 +8,8 @@ service CalculatorService {
     rpc Sum (SumRequest) returns (SumResponse) {};
 
 // Streaming API
-rpc PrimeNumberDecomposition (PrimeNumberDecompositionRequest) returns (stream PrimeNumberDecompositionResponse) {};
-
-}
+    rpc PrimeNumberDecomposition (PrimeNumberDecompositionRequest) returns (stream PrimeNumberDecompositionResponse) {};
+ }
 
 message SumRequest {
     int32 first_number = 1;

@@ -11,6 +11,28 @@ const grpc = require('grpc')
     Implements the greet RPC method.
 */
 
+const primeNumberDecomposition = (call, callback) => {
+    let number = call.request.getNumber()
+    let dividor = 2
+
+    while (number > 1) {
+        if (number % divisor === 0) {
+            const primeNumberDecompositionResponse = new call.primeNumberDecompositionResponse()
+
+            primeNumberDecompositionResponse.setPrimeFactor(divisor)
+
+            number = number / divisor
+
+            call.write(primeNumberDecompositionResponse)
+        }
+        else {
+            divisor++
+            console.log('Divisor has increased to ', divisor)
+        }
+        call.end()
+    }
+}
+
 const greet = (call, callback) => {
     const greeting = new greets.GreetResponse()
 
@@ -23,7 +45,7 @@ const greet = (call, callback) => {
 
 const greetManyTimes = (call, callback) => {
     const firstName = call.request.getGreeting().getFirstName()
-    console.log({ firstName})
+    console.log({ firstName })
 
     let count = 0, intervalID = setInterval(() => {
         const greetManyTimesResponse = new greets.GreetManyTimesResponse()
