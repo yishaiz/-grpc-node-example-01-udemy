@@ -78,7 +78,8 @@ const main = () => {
     // server.addService(service.GreetServiceClient, {greet: greet})
     server.addService(greetService.GreetServiceService, {
         greet,
-        greetManyTimes
+        greetManyTimes,
+        primeNumberDecomposition
     })
     server.addService(calcService.CalculatorServiceService, { sum })
 

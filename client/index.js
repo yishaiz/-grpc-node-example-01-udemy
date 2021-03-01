@@ -100,11 +100,46 @@ const callSum = () => {
   })
 };
 
+
+
+const callPrimeNumberDecomposition = () => {
+  const hostAndPort = 'localhost:50051';
+  const client = new calcService.CalculatorServiceClient(
+    hostAndPort,
+    grpc.credentials.createInsecure()
+  );
+
+  const request = new calc.PrimeNumberDecompositionRequest();
+  const number = 567890
+  request.setNumber(number)
+  const call = client.primeNumberDecomposition(request, () => {
+
+    call.on('data', response => {
+      console.log('Prime Fctor Found : ', response.getPrimeFactor())
+    })
+
+    call.on('error', error => {
+      console.error(error)
+    })
+
+    call.on('status', status => {
+      console.log({ status })
+    })
+
+    call.on('end', () => {
+      console.log('Streaming Ended !')
+    })
+
+
+  })
+}
+
 console.log(`hello from client`)
 
 const main = () => {
-  callGreeting()
-  callGreetManyTimes()
-  callSum()
+  callPrimeNumberDecomposition()
+  // callGreeting()
+  // callGreetManyTimes()
+  // callSum()
 }
 main();
