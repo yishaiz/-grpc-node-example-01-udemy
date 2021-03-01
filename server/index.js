@@ -22,7 +22,8 @@ const greet = (call, callback) => {
 }
 
 const greetManyTimes = (call, callback) => {
-    const firstName = call.request.getGreeting().getFirstName
+    const firstName = call.request.getGreeting().getFirstName()
+    console.log({ firstName})
 
     let count = 0, intervalID = setInterval(() => {
         const greetManyTimesResponse = new greets.GreetManyTimesResponse()
