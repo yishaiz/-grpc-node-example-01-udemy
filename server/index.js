@@ -13,11 +13,11 @@ const grpc = require('grpc')
 
 const primeNumberDecomposition = (call, callback) => {
     let number = call.request.getNumber()
-    let dividor = 2
-console.log(number)
+    let divisor = 2
+    console.log(number)
     while (number > 1) {
         if (number % divisor === 0) {
-            const primeNumberDecompositionResponse = new call.primeNumberDecompositionResponse()
+            const primeNumberDecompositionResponse = new calc.PrimeNumberDecompositionResponse()
 
             primeNumberDecompositionResponse.setPrimeFactor(divisor)
 
@@ -79,9 +79,11 @@ const main = () => {
     server.addService(greetService.GreetServiceService, {
         greet,
         greetManyTimes,
+    })
+    server.addService(calcService.CalculatorServiceService, {
+        sum,
         primeNumberDecomposition
     })
-    server.addService(calcService.CalculatorServiceService, { sum })
 
     // console.log({grpc, server})
     const hostAndPort = "127.0.0.1:50051"
