@@ -4,7 +4,6 @@ const greetService = require('../server/protos/greet_grpc_pb')
 const calc = require('../server/protos/calculator_pb')
 const calcService = require('../server/protos/calculator_grpc_pb')
 
-
 const grpc = require('grpc')
 
 /*
@@ -33,7 +32,6 @@ const primeNumberDecomposition = (call, callback) => {
     }
     console.log('end')
     call.end()
-
 }
 
 const greet = (call, callback) => {

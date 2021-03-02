@@ -7,8 +7,11 @@ service GreetService {
   // rpc MethodName (Request) returns (Response);
   rpc Greet (GreetRequest) returns (GreetResponse) {};
 
-    // streaming
+    // Server streaming API
     rpc GreetManyTimes (GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
+
+    // Server streaming API
+    rpc LongGreet (stream LongGreetRequest) returns (LongGreetResponse) {};
 }
 
 message Greeting { 
@@ -20,11 +23,19 @@ message GreetRequest {
   Greeting greeting = 1;
 }
 
+message LongGreetRequest {
+  Greeting greeting = 1;
+}
+
 message GreetManyTimesRequest {
   Greeting greeting = 1;
 }
 
 message GreetResponse {
+  string result = 1;
+}
+
+message LongGreetResponse {
   string result = 1;
 }
 
