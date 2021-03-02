@@ -27,9 +27,10 @@ const primeNumberDecomposition = (call, callback) => {
         }
         else {
             divisor++
-            console.log('Divisor has increased to ', divisor)
+            // console.log('Divisor has increased to ', divisor)
         }
     }
+    console.log('Divisor has increased to ', divisor)
     console.log('end')
     call.end()
 }
@@ -77,7 +78,7 @@ const longGreet = (call, callback) => {
 
     call.on('end', () => {
         console.log('end')
-        // here should get response and send to clinet
+        // here should get response and send to client
         const response = new greets.LongGreetResponse()
 
         response.setResult('Long Greet Client Streaming ...')
