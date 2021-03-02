@@ -10,7 +10,7 @@ service GreetService {
     // Server streaming API
     rpc GreetManyTimes (GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
 
-    // Server streaming API
+    // Client streaming API
     rpc LongGreet (stream LongGreetRequest) returns (LongGreetResponse) {};
 }
 

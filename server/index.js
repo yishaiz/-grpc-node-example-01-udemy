@@ -63,6 +63,29 @@ const greetManyTimes = (call, callback) => {
     }, 1000)
 }
 
+const longGreet = (call, callback) => {
+    call.on('data', request => {
+        const fullname = request.getGreet().getFirstName() + ' ' +
+            request.getGreet().getLastName()
+
+        console.log('Hello ', fullname)
+    })
+
+    call.on('error', error => {
+        console.error(error)
+    })
+
+    call.on('end', () => {
+        console.log('end')
+        // here should get response and send to clinet
+        const response = new greets.LongGreetResponse()
+
+        response.setResult('Long Greet Client Streaming ...')
+        callback(null, response)
+    })
+
+}
+
 const sum = (call, callback) => {
     const sumResponse = new calc.SumResponse()
     const firstNumber = call.request.getFirstNumber()
@@ -80,6 +103,7 @@ const main = () => {
     server.addService(greetService.GreetServiceService, {
         greet,
         greetManyTimes,
+        longGreet
     })
     server.addService(calcService.CalculatorServiceService, {
         sum,
