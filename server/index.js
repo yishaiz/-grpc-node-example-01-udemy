@@ -17,6 +17,7 @@ const primeNumberDecomposition = (call, callback) => {
     console.log(number)
     while (number > 1) {
         if (number % divisor === 0) {
+            console.log({ number, divisor })
             const primeNumberDecompositionResponse = new calc.PrimeNumberDecompositionResponse()
 
             primeNumberDecompositionResponse.setPrimeFactor(divisor)
@@ -27,10 +28,12 @@ const primeNumberDecomposition = (call, callback) => {
         }
         else {
             divisor++
-            console.log('Divisor has increased to ', divisor)
+            // console.log('Divisor has increased to ', divisor)
         }
-        call.end()
     }
+    console.log('end')
+    call.end()
+
 }
 
 const greet = (call, callback) => {

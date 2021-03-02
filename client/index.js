@@ -114,31 +114,32 @@ const callPrimeNumberDecomposition = () => {
   request.setNumber(number)
 
 
-  
-  const call = client.primeNumberDecomposition(request, () => {})
-  
 
-    call.on('data', response => {
-      console.log('Prime Factor Found : ', response.getPrimeFactor())
-    })
+  const call = client.primeNumberDecomposition(request, () => { })
 
-    call.on('error', error => {
-      console.error(error)
-    })
 
-    call.on('status', status => {
-      console.log({ status })
-    })
+  call.on('data', response => {
+    console.log('Prime Factor Found : ', response.getPrimeFactor())
+  })
 
-    call.on('end', () => {
-      console.log('Streaming Ended !')
-    })
+  call.on('error', error => {
+    console.error(error)
+  })
+
+  call.on('status', status => {
+    console.log({ status })
+  })
+
+  call.on('end', () => {
+    console.log('Streaming Ended !')
+  })
 }
 
 console.log(`hello from client`)
 
 const main = () => {
   callPrimeNumberDecomposition()
+  
   // callGreeting()
   // callGreetManyTimes()
   // callSum()
