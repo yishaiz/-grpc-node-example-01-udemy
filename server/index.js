@@ -14,7 +14,7 @@ const grpc = require('grpc')
 const primeNumberDecomposition = (call, callback) => {
     let number = call.request.getNumber()
     let dividor = 2
-
+console.log(number)
     while (number > 1) {
         if (number % divisor === 0) {
             const primeNumberDecompositionResponse = new call.primeNumberDecompositionResponse()

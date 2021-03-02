@@ -112,10 +112,14 @@ const callPrimeNumberDecomposition = () => {
   const request = new calc.PrimeNumberDecompositionRequest();
   const number = 567890
   request.setNumber(number)
-  const call = client.primeNumberDecomposition(request, () => {
+
+
+  
+  const call = client.primeNumberDecomposition(request, () => {})
+  
 
     call.on('data', response => {
-      console.log('Prime Fctor Found : ', response.getPrimeFactor())
+      console.log('Prime Factor Found : ', response.getPrimeFactor())
     })
 
     call.on('error', error => {
@@ -129,9 +133,6 @@ const callPrimeNumberDecomposition = () => {
     call.on('end', () => {
       console.log('Streaming Ended !')
     })
-
-
-  })
 }
 
 console.log(`hello from client`)
