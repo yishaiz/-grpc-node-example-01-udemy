@@ -28,7 +28,7 @@ const primeNumberDecomposition = (call, callback) => {
         }
         else {
             divisor++
-            // console.log('Divisor has increased to ', divisor)
+            console.log('Divisor has increased to ', divisor)
         }
     }
     console.log('end')
