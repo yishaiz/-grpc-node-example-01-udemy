@@ -59,6 +59,7 @@ const callLongGreeting = () => {
 
   let count = 0, intervalID = setInterval(() => {
     console.log('Sending message', count)
+
     const request = new greets.LongGreetRequest()
     const greeting = new greets.Greeting()
     greeting.setFirstName('Yishai')
@@ -67,7 +68,17 @@ const callLongGreeting = () => {
     console.log({ request })
     request.setGreet(greeting)
 
+
+    const requestTwo = new greets.LongGreetRequest()
+    const greetingTwo = new greets.Greeting()
+    greetingTwo.setFirstName('Tom')
+    greetingTwo.setLastName('Jerry')
+
+    console.log({ requestTwo })
+    requestTwo.setGreet(greetingTwo)
+
     call.write(request)
+    call.write(requestTwo)
 
     if (++count > 3) {
       clearInterval(intervalID)
