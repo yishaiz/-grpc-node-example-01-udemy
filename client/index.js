@@ -64,10 +64,12 @@ const callLongGreeting = () => {
     greeting.setFirstName('Yishai')
     greeting.setLastName('z')
 
+    console.log({ request })
     request.setGreet(greeting)
 
     call.write(request)
-    if(++count>3){
+
+    if (++count > 3) {
       clearInterval(intervalID)
       call.end()
     }

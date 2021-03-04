@@ -24,7 +24,7 @@ message GreetRequest {
 }
 
 message LongGreetRequest {
-  Greeting greeting = 1;
+  Greeting greet = 1;
 }
 
 message GreetManyTimesRequest {

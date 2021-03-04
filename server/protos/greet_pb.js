@@ -512,7 +512,7 @@ proto.greet.LongGreetRequest.prototype.toObject = function(opt_includeInstance) 
  */
 proto.greet.LongGreetRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    greeting: (f = msg.getGreeting()) && proto.greet.Greeting.toObject(includeInstance, f)
+    greet: (f = msg.getGreet()) && proto.greet.Greeting.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -552,7 +552,7 @@ proto.greet.LongGreetRequest.deserializeBinaryFromReader = function(msg, reader)
     case 1:
       var value = new proto.greet.Greeting;
       reader.readMessage(value,proto.greet.Greeting.deserializeBinaryFromReader);
-      msg.setGreeting(value);
+      msg.setGreet(value);
       break;
     default:
       reader.skipField();
@@ -583,7 +583,7 @@ proto.greet.LongGreetRequest.prototype.serializeBinary = function() {
  */
 proto.greet.LongGreetRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getGreeting();
+  f = message.getGreet();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -595,10 +595,10 @@ proto.greet.LongGreetRequest.serializeBinaryToWriter = function(message, writer)
 
 
 /**
- * optional Greeting greeting = 1;
+ * optional Greeting greet = 1;
  * @return {?proto.greet.Greeting}
  */
-proto.greet.LongGreetRequest.prototype.getGreeting = function() {
+proto.greet.LongGreetRequest.prototype.getGreet = function() {
   return /** @type{?proto.greet.Greeting} */ (
     jspb.Message.getWrapperField(this, proto.greet.Greeting, 1));
 };
@@ -608,7 +608,7 @@ proto.greet.LongGreetRequest.prototype.getGreeting = function() {
  * @param {?proto.greet.Greeting|undefined} value
  * @return {!proto.greet.LongGreetRequest} returns this
 */
-proto.greet.LongGreetRequest.prototype.setGreeting = function(value) {
+proto.greet.LongGreetRequest.prototype.setGreet = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
@@ -617,8 +617,8 @@ proto.greet.LongGreetRequest.prototype.setGreeting = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.greet.LongGreetRequest} returns this
  */
-proto.greet.LongGreetRequest.prototype.clearGreeting = function() {
-  return this.setGreeting(undefined);
+proto.greet.LongGreetRequest.prototype.clearGreet = function() {
+  return this.setGreet(undefined);
 };
 
 
@@ -626,7 +626,7 @@ proto.greet.LongGreetRequest.prototype.clearGreeting = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.greet.LongGreetRequest.prototype.hasGreeting = function() {
+proto.greet.LongGreetRequest.prototype.hasGreet = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
