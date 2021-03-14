@@ -97,6 +97,35 @@ const sum = (call, callback) => {
     callback(null, sumResponse)
 }
 
+const computeAvergae = (call, callback) => {
+    var sum = 0;
+    var count = 0;
+
+    call.on('data', request => {
+        sum += request.getNumber()
+        count++
+
+        console.log('Got number', request.getNumber())
+        console.log({ sum, count })
+    })
+
+    call.on('error', error => {
+        console.error(error)
+    })
+
+    call.on('end', () => {
+        // compute the actual average
+
+        const average = sum / count
+
+        const response = new calc.ComputeAvergaeResponse()
+        response.setAverage(average)
+
+        callback(null, response)
+    })
+}
+
+
 const main = () => {
     const server = new grpc.Server()
 
@@ -108,7 +137,8 @@ const main = () => {
     })
     server.addService(calcService.CalculatorServiceService, {
         sum,
-        primeNumberDecomposition
+        primeNumberDecomposition,
+        computeAvergae
     })
 
     // console.log({grpc, server})

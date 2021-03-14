@@ -4,6 +4,28 @@
 var grpc = require('grpc');
 var protos_calculator_pb = require('../protos/calculator_pb.js');
 
+function serialize_calculator_ComputeAvaerageRequest(arg) {
+  if (!(arg instanceof protos_calculator_pb.ComputeAvaerageRequest)) {
+    throw new Error('Expected argument of type calculator.ComputeAvaerageRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_calculator_ComputeAvaerageRequest(buffer_arg) {
+  return protos_calculator_pb.ComputeAvaerageRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_calculator_ComputeAvaerageResponse(arg) {
+  if (!(arg instanceof protos_calculator_pb.ComputeAvaerageResponse)) {
+    throw new Error('Expected argument of type calculator.ComputeAvaerageResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_calculator_ComputeAvaerageResponse(buffer_arg) {
+  return protos_calculator_pb.ComputeAvaerageResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_calculator_PrimeNumberDecompositionRequest(arg) {
   if (!(arg instanceof protos_calculator_pb.PrimeNumberDecompositionRequest)) {
     throw new Error('Expected argument of type calculator.PrimeNumberDecompositionRequest');
@@ -74,6 +96,17 @@ primeNumberDecomposition: {
     requestDeserialize: deserialize_calculator_PrimeNumberDecompositionRequest,
     responseSerialize: serialize_calculator_PrimeNumberDecompositionResponse,
     responseDeserialize: deserialize_calculator_PrimeNumberDecompositionResponse,
+  },
+  computeAvaerage: {
+    path: '/calculator.CalculatorService/ComputeAvaerage',
+    requestStream: true,
+    responseStream: false,
+    requestType: protos_calculator_pb.ComputeAvaerageRequest,
+    responseType: protos_calculator_pb.ComputeAvaerageResponse,
+    requestSerialize: serialize_calculator_ComputeAvaerageRequest,
+    requestDeserialize: deserialize_calculator_ComputeAvaerageRequest,
+    responseSerialize: serialize_calculator_ComputeAvaerageResponse,
+    responseDeserialize: deserialize_calculator_ComputeAvaerageResponse,
   },
 };
 
