@@ -10,14 +10,14 @@ service CalculatorService {
     // Streaming API
     rpc PrimeNumberDecomposition (PrimeNumberDecompositionRequest) returns (stream PrimeNumberDecompositionResponse) {};
 
-    rpc ComputeAvaerage (stream ComputeAvaerageRequest) returns (ComputeAvaerageResponse) {};
+    rpc ComputeAverage (stream ComputeAverageRequest) returns (ComputeAverageResponse) {};
  }
 
- message ComputeAvaerageRequest {
+ message ComputeAverageRequest {
     int32 number = 1;
 }
 
-message ComputeAvaerageResponse {
+message ComputeAverageResponse {
     double number = 1;
 }
 

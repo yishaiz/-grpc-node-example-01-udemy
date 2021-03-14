@@ -4,26 +4,26 @@
 var grpc = require('grpc');
 var protos_calculator_pb = require('../protos/calculator_pb.js');
 
-function serialize_calculator_ComputeAvaerageRequest(arg) {
-  if (!(arg instanceof protos_calculator_pb.ComputeAvaerageRequest)) {
-    throw new Error('Expected argument of type calculator.ComputeAvaerageRequest');
+function serialize_calculator_ComputeAverageRequest(arg) {
+  if (!(arg instanceof protos_calculator_pb.ComputeAverageRequest)) {
+    throw new Error('Expected argument of type calculator.ComputeAverageRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_calculator_ComputeAvaerageRequest(buffer_arg) {
-  return protos_calculator_pb.ComputeAvaerageRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_calculator_ComputeAverageRequest(buffer_arg) {
+  return protos_calculator_pb.ComputeAverageRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_calculator_ComputeAvaerageResponse(arg) {
-  if (!(arg instanceof protos_calculator_pb.ComputeAvaerageResponse)) {
-    throw new Error('Expected argument of type calculator.ComputeAvaerageResponse');
+function serialize_calculator_ComputeAverageResponse(arg) {
+  if (!(arg instanceof protos_calculator_pb.ComputeAverageResponse)) {
+    throw new Error('Expected argument of type calculator.ComputeAverageResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_calculator_ComputeAvaerageResponse(buffer_arg) {
-  return protos_calculator_pb.ComputeAvaerageResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_calculator_ComputeAverageResponse(buffer_arg) {
+  return protos_calculator_pb.ComputeAverageResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_calculator_PrimeNumberDecompositionRequest(arg) {
@@ -97,16 +97,16 @@ primeNumberDecomposition: {
     responseSerialize: serialize_calculator_PrimeNumberDecompositionResponse,
     responseDeserialize: deserialize_calculator_PrimeNumberDecompositionResponse,
   },
-  computeAvaerage: {
-    path: '/calculator.CalculatorService/ComputeAvaerage',
+  computeAverage: {
+    path: '/calculator.CalculatorService/ComputeAverage',
     requestStream: true,
     responseStream: false,
-    requestType: protos_calculator_pb.ComputeAvaerageRequest,
-    responseType: protos_calculator_pb.ComputeAvaerageResponse,
-    requestSerialize: serialize_calculator_ComputeAvaerageRequest,
-    requestDeserialize: deserialize_calculator_ComputeAvaerageRequest,
-    responseSerialize: serialize_calculator_ComputeAvaerageResponse,
-    responseDeserialize: deserialize_calculator_ComputeAvaerageResponse,
+    requestType: protos_calculator_pb.ComputeAverageRequest,
+    responseType: protos_calculator_pb.ComputeAverageResponse,
+    requestSerialize: serialize_calculator_ComputeAverageRequest,
+    requestDeserialize: deserialize_calculator_ComputeAverageRequest,
+    responseSerialize: serialize_calculator_ComputeAverageResponse,
+    responseDeserialize: deserialize_calculator_ComputeAverageResponse,
   },
 };
 

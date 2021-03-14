@@ -4,9 +4,9 @@ const greetService = require('../server/protos/greet_grpc_pb')
 
 const calc = require('../server/protos/calculator_pb')
 const calcService = require('../server/protos/calculator_grpc_pb')
+const hostAndPort = 'localhost:50051';
 
 const callGreeting = () => {
-  const hostAndPort = 'localhost:50051';
   const client = new greetService.GreetServiceClient(
     hostAndPort,
     grpc.credentials.createInsecure()
@@ -41,7 +41,6 @@ const callGreeting = () => {
 };
 
 const callLongGreeting = () => {
-  const hostAndPort = 'localhost:50051';
   const client = new greetService.GreetServiceClient(
     hostAndPort,
     grpc.credentials.createInsecure()
@@ -112,7 +111,6 @@ const callLongGreeting = () => {
 };
 
 const callGreetManyTimes = () => {
-  const hostAndPort = 'localhost:50051';
   const client = new greetService.GreetServiceClient(
     hostAndPort,
     grpc.credentials.createInsecure()
@@ -145,7 +143,6 @@ const callGreetManyTimes = () => {
 
 
 const callSum = () => {
-  const hostAndPort = 'localhost:50051';
   const client = new calcService.CalculatorServiceClient(
     hostAndPort,
     grpc.credentials.createInsecure()
@@ -170,7 +167,6 @@ const callSum = () => {
 
 
 const callPrimeNumberDecomposition = () => {
-  const hostAndPort = 'localhost:50051';
   const client = new calcService.CalculatorServiceClient(
     hostAndPort,
     grpc.credentials.createInsecure()
@@ -202,11 +198,33 @@ const callPrimeNumberDecomposition = () => {
   })
 }
 
+
+const callComputeAverage = () => {
+  const client = new calcService.CalculatorServiceClient(
+    hostAndPort,
+    grpc.credentials.createInsecure()
+  )
+
+  const request = new calc.ComputeAverageRequest()
+console.log('debug 111')
+  const call = client.computeAverage(request, (error, response) => {
+    if (!error) {
+      console.log('Received a response from the server. Avergage : ', response.getAverage())
+    }
+    else {
+      console.error(error)
+    }
+  })
+}
+
+
+
 console.log(`hello from client`)
 
 const main = () => {
-  callLongGreeting()
+  callComputeAverage()
   return /////
+  callLongGreeting()
 
   callPrimeNumberDecomposition()
 
